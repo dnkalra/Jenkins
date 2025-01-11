@@ -62,10 +62,9 @@ pipeline {
 		stage('Build Docker Image') {
 			steps {
 				//"docker build -t in28min/currency-exchange-devops:$env.BUILD_TAG"
-				script {
 					// dockerImage = docker.build("in28min/currency-exchange-devops:${env.BUILD_TAG}")
+				script {
 					dockerImage = docker.build("dnkalra/java-currency:${env.BUILD_TAG}")
-					// docker push dnkalra/java-currency:tagname
 
 				}
 
