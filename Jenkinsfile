@@ -59,39 +59,39 @@ pipeline {
 		// 	}
 		// }
 
-		stage('Build Docker Image') {
-			steps {
-				//"docker build -t in28min/currency-exchange-devops:$env.BUILD_TAG"
-					// dockerImage = docker.build("in28min/currency-exchange-devops:${env.BUILD_TAG}")
-				script {
-					dockerImage = docker.build("dnkalra/java-currency:${env.BUILD_TAG}")
+	// 	stage('Build Docker Image') {
+	// 		steps {
+	// 			//"docker build -t in28min/currency-exchange-devops:$env.BUILD_TAG"
+	// 				// dockerImage = docker.build("in28min/currency-exchange-devops:${env.BUILD_TAG}")
+	// 			script {
+	// 				dockerImage = docker.build("dnkalra/java-currency:${env.BUILD_TAG}")
 
-				}
+	// 			}
 
-			}
-		}
+	// 		}
+	// 	}
 
-		stage('Push Docker Image') {
-			steps {
-				script {
-					docker.withRegistry('', 'dockerhub') {
-						dockerImage.push();
-						dockerImage.push('latest');
-					}
-				}
-			}
-		}
-	} 
+	// 	stage('Push Docker Image') {
+	// 		steps {
+	// 			script {
+	// 				docker.withRegistry('', 'dockerhub') {
+	// 					dockerImage.push();
+	// 					dockerImage.push('latest');
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// } 
 	
-	post {
-		always {
-			echo 'Im awesome. I run always'
-		}
-		success {
-			echo 'I run when you are successful'
-		}
-		failure {
-			echo 'I run when you fail'
-		}
-	}
+	// post {
+	// 	always {
+	// 		echo 'Im awesome. I run always'
+	// 	}
+	// 	success {
+	// 		echo 'I run when you are successful'
+	// 	}
+	// 	failure {
+	// 		echo 'I run when you fail'
+	// 	}
+	// }
 }
